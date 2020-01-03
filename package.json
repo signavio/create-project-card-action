@@ -1,0 +1,32 @@
+{
+  "name": "create-project-card-action",
+  "version": "1.0.0",
+  "description": "Creates a card on a project board based on an Github issue event",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "pack": "ncc build",
+    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/signavio/create-project-card-action"
+  },
+  "keywords": [
+    "actions"
+  ],
+  "author": "Signavio/steffektif",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "@zeit/ncc": "^0.20.5",
+    "js-yaml": "^3.13.1",
+    "prettier": "^1.19.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4"
+  }
+}

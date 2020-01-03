@@ -1,6 +1,43 @@
 # Create-project-card-action
 Will create a card for a created pull request on a given board in a given column. 
 
+## Disclaimer
+This action at the moment only works with pull requests, not with issues. 
+In order to make it work with issues the impl would need to be extended in a way that it checks if the payload is an issue or an pullrequest.
+
+## Inputs
+**Required** `column_id` is the id of the column where the card should be created
+**Required** `github_token` a github token that has access to create a card on an organization wide project board 
+
+## Token
+In order to make that action work, it is necessary to provide a token that has the permission to create a card on an organization wide board. 
+The very own GitHub Secrets token is not enough for that case. 
+You will need to create a personal access token (I used one from a bot user) and add that your repos secret:
+Go to settings -> secrets and add the token with a name of you choice. 
+I chose __GITHUB_GLOBAL_TOKEN__ to be close to the original token. 
+
+## ColumnId
+Column ids are globally unique on GitHub, which is why this action does not need anything else, like the project id or URL. 
+To find out the id go to your project board, open your browsers development tools and inspect the column that you want pull request cards to be placed in.
+
+## Example usage
+
+```yml
+name: Add PR to SWA dev board
+on: 
+  pull_request:
+    types: [opened]
+jobs:
+  add-project-card-to-board:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Add card to project board'
+      uses: signavio/create-project-card-action@v1
+      with:
+         column_id: 3019999
+         github_token: ${{ secrets.GITHUB_GLOBAL_TOKEN }}
+```
+
 ## Release 
 In order to release do the following:
 1. Do your changes
@@ -13,16 +50,3 @@ In order to release do the following:
 8. When verified that everything is working tag that version using `git tag v3` and push the tag: `git push --tags` 
 9. In your action configuration in the GitHub actions workflow use the new released version `uses: signavio/create-project-card-action@v3`
 10. Celebrate great success
-
-## Inputs
-**Required** `column_id` is the id of the column where the card should be created
-**Required** `github_token` the github secret token, github provides that thing on its own.
-
-## Example usage
-
-```yml
-uses: signavio/create-project-card-action@v1
-with:
-  column_id: 3019999
-  github_token: ${{ secrets.GITHUB_TOKEN }}
-```

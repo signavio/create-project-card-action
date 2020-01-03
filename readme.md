@@ -8,9 +8,9 @@ In order to release do the following:
 3. Do `npm install && npm run build && npm prune --production`
 4. Add `node_modules` and `lib` to git: `git add node_modules lib -f` (use `-f` to force add since its ignored by `.gitignore`)
 5. Push your changes to the release branch: `git push origin release/3`  
-6. To verify that everything works set your branch as `uses` in an actions workflow, e.g. `uses: steffektif/unlabel-action@release/3`
+6. To verify that everything works set your branch as `uses` in an actions workflow, e.g. `uses: signavio/create-project-card-action@release/3`
 7. When verified that everything is working tag that version using `git tag v3` and push the tag: `git push --tags` 
-8. In your action configuration in the GitHub actions workflow use the new released version `uses: steffektif/unlabel-action@v3`
+8. In your action configuration in the GitHub actions workflow use the new released version `uses: signavio/create-project-card-action@v3`
 9. Celebrate great success
 
 ## Inputs
@@ -22,7 +22,6 @@ In order to release do the following:
 ```yml
 uses: signavio/create-project-card-action@v1
 with:
-  project_url: https://github.com/orgs/signavio/projects/3
   column_id: 3019999
-  repo_token: ${{ secrets.GITHUB_TOKEN }}
+  github_token: ${{ secrets.GITHUB_TOKEN }}
 ```

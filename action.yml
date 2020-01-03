@@ -2,13 +2,10 @@ name: 'Create project card'
 description: 'Creates a project card on a Github project board based on an Github event.'
 author: 'steffektif'
 inputs:
-  project_url: 
-    description: 'The url of the project where the card should be created.'
-    required: true
   column_id:
     description: 'The id of the project column where the card should be created.'
     required: true
-  repo_token:
+  github_token:
     description: 'Auth token to call the GitHub REST API'
     required: true
 runs:

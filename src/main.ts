@@ -3,18 +3,15 @@ import {GitHub, context} from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const octokit = new GitHub(core.getInput('repo_token'))
-    const { owner, repo } = context.repo;
-    const labelName = <string> core.getInput('label_name')
-    const issueNumber = context.issue.number
-
-    octokit.issues.removeLabel({
-      issue_number: issueNumber,
-      name: labelName,
-      owner: owner,
-      repo: repo
+    const octokit = new GitHub(core.getInput('github_token'))
+    const columnId = +core.getInput("column_id")
+    
+    octokit.projects.createCard({
+      column_id: columnId,
+      content_id: context.issue.number,
+      content_type: 'PullRequest'
     })
-
+   
   } catch (error) {
     core.setFailed(error.message)
   }

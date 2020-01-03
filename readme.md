@@ -1,4 +1,4 @@
-# Create-pull-request-action
+# Create-project-card-action
 Will create a card for a created pull request on a given board in a given column. 
 
 ## Release 
@@ -14,14 +14,13 @@ In order to release do the following:
 9. Celebrate great success
 
 ## Inputs
-**Required** `project_url` is the name of the label which will be removed from the issue.
 **Required** `column_id` is the id of the column where the card should be created
 **Required** `github_token` the github secret token, github provides that thing on its own.
 
 ## Example usage
 
 ```yml
-uses: signavio/create-project-card-action@v3
+uses: signavio/create-project-card-action@v1
 with:
   project_url: https://github.com/orgs/signavio/projects/3
   column_id: 3019999

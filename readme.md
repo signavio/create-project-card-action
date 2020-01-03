@@ -6,8 +6,8 @@ This action at the moment only works with pull requests, not with issues.
 In order to make it work with issues the impl would need to be extended in a way that it checks if the payload is an issue or an pullrequest.
 
 ## Inputs
-**Required** `column_id` is the id of the column where the card should be created
-**Required** `github_token` a github token that has access to create a card on an organization wide project board 
+- **Required** `column_id` is the id of the column where the card should be created
+- **Required** `github_token` a github token that has access to create a card on an organization wide project board 
 
 ## Token
 In order to make that action work, it is necessary to provide a token that has the permission to create a card on an organization wide board. 

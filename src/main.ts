@@ -17,7 +17,7 @@ async function run(): Promise<void> {
       repo: repo,
       pull_number: pr_number,
     }).then( 
-      result => {
+      function(result: { data: { draft: boolean } }) {
         const isDraft = result.data.draft   
         if(ignoreDrafts){
         if(!isDraft) {
@@ -27,7 +27,7 @@ async function run(): Promise<void> {
         createCard(octokit,columnId, prId)
       } 
     },
-      error => {
+      (error: string) => {
         core.setFailed(error)
       }
     );

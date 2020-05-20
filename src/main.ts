@@ -6,8 +6,12 @@ async function run(): Promise<void> {
     const octokit = new GitHub(core.getInput('github_token'))
     const columnId = +core.getInput("column_id")
     const ignoreDrafts:boolean = (/true/i).test(core.getInput('ignore_drafts'))
-
+    
     const isDraft:boolean = context.payload.pull_request?.isDraft
+
+    console.log('is draft:' + isDraft)
+    console.log('is ignore draftes' + ignoreDrafts)
+
     const prId = context.payload.pull_request?.id
 
     if(ignoreDrafts){
@@ -18,7 +22,6 @@ async function run(): Promise<void> {
       createCard(octokit,columnId, prId)
     }
     
-   
   } catch (error) {
     core.setFailed(error.message)
   }

@@ -8,6 +8,10 @@ inputs:
   github_token:
     description: 'Auth token to call the GitHub REST API'
     required: true
+  ignore_drafts:
+    description: 'Defines if draft pull requests should be ignored.'
+    required: false
+    default: false
 runs:
   using: 'node12'
   main: 'lib/main.js'

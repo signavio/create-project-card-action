@@ -9,29 +9,32 @@ async function run(): Promise<void> {
     
     const owner = context.repo.owner
     const repo = context.repo.repo
-    // const pr_number = Number(context.payload.pull_request?.number)
-    const pr_number = 104
+    const pr_number = Number(context.payload.pull_request?.number)
     const prId = context.payload.pull_request?.id
 
-    octokit.pulls.get({
+    const promise = octokit.pulls.get({
       owner: owner,
       repo: repo,
       pull_number: pr_number,
-    }).then( 
-      (result: { data: { draft: boolean } }) => {
-        const isDraft = result.data.draft   
-        if(ignoreDrafts){
-        if(!isDraft) {
-          createCard(octokit, columnId, prId)
+    })
+
+    promise.then(
+        (result) => {
+          console.log(result.data.draft)
+        },
+        error => {
+          console.log(error)
         }
-      } else {
-        createCard(octokit,columnId, prId)
-      } 
-    },
-      (error: string) => {
-        core.setFailed(error)
-      }
-    );
+    )
+
+    // const isDraft = result.data.draft   
+    //   if(ignoreDrafts){
+    //   if(!isDraft) {
+    //     createCard(octokit, columnId, prId)
+    //   }
+    // } else {
+    //   createCard(octokit,columnId, prId)
+    // }  
   } catch (error) {
     core.setFailed(error.message)
   }

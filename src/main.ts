@@ -9,7 +9,8 @@ async function run(): Promise<void> {
     
     const owner = context.repo.owner
     const repo = context.repo.repo
-    const pr_number = Number(context.payload.pull_request?.number)
+    // const pr_number = Number(context.payload.pull_request?.number)
+    const pr_number = 104
     const prId = context.payload.pull_request?.id
 
     octokit.pulls.get({

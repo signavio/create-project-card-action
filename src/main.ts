@@ -7,6 +7,8 @@ async function run(): Promise<void> {
     const columnId = +core.getInput("column_id")
     const ignoreDrafts = core.getInput('ignore_drafts')
 
+    console.log(ignoreDrafts)
+
     const isDraft = context.payload.pull_request?.isDraft
     const prId = context.payload.pull_request?.id
 

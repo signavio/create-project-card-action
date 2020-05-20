@@ -10,8 +10,9 @@ async function run(): Promise<void> {
     
     const isDraft:boolean = context.payload.pull_request?.isDraft
 
-    console.log('is draft:' + isDraft)
-    console.log('is ignore draftes' + ignoreDrafts)
+    console.log('payload: ' + context.payload.pull_request)
+    console.log('is draft: ' + isDraft)
+    console.log('is ignore draft: ' + ignoreDrafts)
 
     const prId = context.payload.pull_request?.id
 

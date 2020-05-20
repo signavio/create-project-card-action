@@ -20,6 +20,9 @@ I chose __GITHUB_GLOBAL_TOKEN__ to be close to the original token.
 Column ids are globally unique on GitHub, which is why this action does not need anything else, like the project id or URL. 
 To find out the id go to your project board, open your browsers development tools and inspect the column that you want pull request cards to be placed in.
 
+## Ignore Drafts 
+Defines if Pull Request drafts should be ignored by this action. 
+
 ## Example usage
 
 ```yml
@@ -36,7 +39,12 @@ jobs:
       with:
          column_id: 3019999
          github_token: ${{ secrets.GITHUB_GLOBAL_TOKEN }}
+         ignore_drafts: true
 ```
+
+## Changelog
+
+v1 -> v2: Added the option ignore draft pull requests.
 
 ## Release 
 In order to release do the following:

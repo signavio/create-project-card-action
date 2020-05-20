@@ -9,8 +9,16 @@ async function run(): Promise<void> {
     // const ignoreDrafts:boolean = (/true/i).test(core.getInput('ignore_drafts'))
     
     const isDraft:boolean = context.payload.pull_request?.isDraft
+    const owner = context.repo.owner
+    const repo = context.repo.repo
+    const pr_number = Number(context.payload.pull_request?.number)
 
     console.log('payload: ' + context.payload.pull_request)
+    octokit.pulls.get({
+      owner: owner,
+      repo: repo,
+      pull_number: pr_number,
+    });
     console.log('is draft: ' + isDraft)
     console.log('is ignore draft: ' + ignoreDrafts)
 

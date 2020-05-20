@@ -5,9 +5,9 @@ async function run(): Promise<void> {
   try {
     const octokit = new GitHub(core.getInput('github_token'))
     const columnId = +core.getInput("column_id")
-    const ignoreDrafts:boolean = core.getInput('ignore_drafts') === 'true'
+    const ignoreDrafts:boolean = (/true/i).test(core.getInput('ignore_drafts'))
 
-    const isDraft = context.payload.pull_request?.isDraft
+    const isDraft:boolean = context.payload.pull_request?.isDraft
     const prId = context.payload.pull_request?.id
 
     if(ignoreDrafts){

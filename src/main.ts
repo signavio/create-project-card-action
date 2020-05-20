@@ -12,20 +12,20 @@ async function run(): Promise<void> {
     const pr_number = Number(context.payload.pull_request?.number)
     const prId = context.payload.pull_request?.id
 
-    const promise = octokit.pulls.get({
+    octokit.pulls.get({
       owner: owner,
       repo: repo,
       pull_number: pr_number,
     })
 
-    promise.then(
-        (result) => {
-          console.log(result.data.draft)
-        },
-        error => {
-          console.log(error)
-        }
-    )
+    // promise.then(
+    //     (result) => {
+    //       console.log(result.data.draft)
+    //     },
+    //     error => {
+    //       console.log(error)
+    //     }
+    // )
 
     // const isDraft = result.data.draft   
     //   if(ignoreDrafts){

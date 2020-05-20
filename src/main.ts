@@ -17,7 +17,7 @@ async function run(): Promise<void> {
       repo: repo,
       pull_number: pr_number,
     }).then( 
-      function(result: { data: { draft: boolean } }) {
+      (result: { data: { draft: boolean } }) => {
         const isDraft = result.data.draft   
         if(ignoreDrafts){
         if(!isDraft) {

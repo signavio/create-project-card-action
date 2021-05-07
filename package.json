@@ -1,33 +1,24 @@
 {
   "name": "create-project-card-action",
   "version": "1.0.0",
-  "description": "Creates a card on a project board based on an Github issue event",
-  "main": "lib/main.js",
+  "description": "Will create a card for a created pull request on a given board in a given column.",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "pack": "ncc build",
-    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/signavio/create-project-card-action"
+    "url": "git+https://github.com/signavio/create-project-card-action.git"
   },
-  "keywords": [
-    "actions"
-  ],
-  "author": "Signavio/steffektif",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/signavio/create-project-card-action/issues"
+  },
+  "homepage": "https://github.com/signavio/create-project-card-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.0",
-    "@actions/github": "^2.2.0",
-    "is-plain-object": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^12.7.12",
-    "@zeit/ncc": "^0.20.5",
-    "js-yaml": "^3.13.1",
-    "prettier": "^1.19.1",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4"
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0"
   }
 }

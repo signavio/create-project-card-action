@@ -1,17 +1,17 @@
-name: 'Create project card'
-description: 'Creates a project card on a Github project board based on an Github event.'
-author: 'steffektif'
+name: "Create project card"
+description: "Creates a project card on a Github project board based on an Github event."
+author: "steffektif"
 inputs:
   column_id:
-    description: 'The id of the project column where the card should be created.'
+    description: "The id of the project column where the card should be created."
     required: true
   github_token:
-    description: 'Auth token to call the GitHub REST API'
+    description: "Auth token to call the GitHub REST API"
     required: true
   ignore_drafts:
-    description: 'Defines if draft pull requests should be ignored.'
+    description: "Defines if draft pull requests should be ignored."
     required: false
     default: false
 runs:
-  using: 'node12'
-  main: 'lib/main.js'
+  using: "node12"
+  main: "index.js"
